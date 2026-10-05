@@ -1,4 +1,4 @@
-# Martina Eghwrudjakpor: Portfolio
+# Martina Uremu Eghwrudjakpor: Portfolio
 
 A Next.js (App Router) build of the portfolio site, with GSAP for the hero
 entrance, the scroll reveals, and the animated nav menu. White background

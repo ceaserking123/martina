@@ -335,6 +335,53 @@ export const galleryImages = [
   "/gallery17.jpg",
 ];
 
+// Photographs of works documented in the PhD thesis, taken from its figure captions.
+export const documentedWorks: { src: string; title: string }[] = [
+  { src: "/documentation/the-bride-01.jpeg", title: "The Bride" },
+  { src: "/documentation/the-bride-02.png", title: "The Bride" },
+  { src: "/documentation/huddlers-01.png", title: "Huddlers" },
+  { src: "/documentation/huddlers-02.png", title: "Huddlers" },
+  { src: "/documentation/riverscape-01.png", title: "Riverscape" },
+  { src: "/documentation/riverscape-02.jpeg", title: "Riverscape" },
+  { src: "/documentation/reflection-01.jpeg", title: "Reflection" },
+  { src: "/documentation/reflection-02.jpeg", title: "Reflection" },
+  { src: "/documentation/the-hand-fan-01.jpeg", title: "The Hand Fan" },
+  { src: "/documentation/the-hand-fan-02.jpeg", title: "The Hand Fan" },
+  { src: "/documentation/clamour-for-resource-control-01.jpeg", title: "Clamour for Resource Control" },
+  { src: "/documentation/clamour-for-resource-control-02.png", title: "Clamour for Resource Control" },
+  { src: "/documentation/maiden-passage-rites-01.png", title: "Maiden Passage Rites" },
+  { src: "/documentation/maiden-passage-rites-02.png", title: "Maiden Passage Rites" },
+  { src: "/documentation/maiden-passage-rites-03.jpeg", title: "Maiden Passage Rites" },
+  { src: "/documentation/our-forest-floor-01.jpeg", title: "Our Forest Floor" },
+  { src: "/documentation/our-forest-floor-02.jpeg", title: "Our Forest Floor" },
+  { src: "/documentation/religion-culture-state-01.jpeg", title: "Religion, Culture & State" },
+  { src: "/documentation/religion-culture-state-02.jpeg", title: "Religion, Culture & State" },
+  { src: "/documentation/seafood-01.png", title: "Seafood" },
+  { src: "/documentation/seafood-02.jpeg", title: "Seafood" },
+  { src: "/documentation/dance-mask-ubiaza-01.jpeg", title: "Dance Mask (Ubiaza)" },
+  { src: "/documentation/dance-mask-ubiaza-02.jpeg", title: "Dance Mask (Ubiaza)" },
+  { src: "/documentation/struggles-01.jpeg", title: "Struggles" },
+  { src: "/documentation/struggles-02.jpeg", title: "Struggles" },
+  { src: "/documentation/truncated-01.jpeg", title: "Truncated" },
+  { src: "/documentation/truncated-02.png", title: "Truncated" },
+  { src: "/documentation/the-delegates-01.jpeg", title: "The Delegates" },
+  { src: "/documentation/the-delegates-02.png", title: "The Delegates" },
+  { src: "/documentation/enfeebled-01.jpeg", title: "Enfeebled" },
+  { src: "/documentation/enfeebled-02.jpeg", title: "Enfeebled" },
+  { src: "/documentation/dancers-on-patina-01.jpeg", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-02.png", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-03.png", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-04.jpeg", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-05.jpeg", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-06.jpeg", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-07.jpeg", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-08.jpeg", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-09.jpeg", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-10.jpeg", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-11.jpeg", title: "Dancers on Patina" },
+  { src: "/documentation/dancers-on-patina-12.jpeg", title: "Dancers on Patina" },
+];
+
 export type Publication = {
   title: string;
   meta: string;

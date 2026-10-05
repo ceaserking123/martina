@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import WorkStrip from "@/components/WorkStrip";
@@ -6,7 +7,26 @@ import Gallery from "@/components/Gallery";
 import Practice from "@/components/Practice";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import { contact } from "@/lib/data";
+import { contact, documentedWorks, galleryImages } from "@/lib/data";
+
+const studioItems = galleryImages.map((src, i) => ({
+  src,
+  alt: `Studio photograph ${i + 1} by Martina Uremu Eghwrudjakpor`,
+  label: String(i + 1).padStart(2, "0"),
+}));
+
+const documentedItems = documentedWorks.map((w) => ({
+  src: w.src,
+  alt: `${w.title}, artwork by Martina Uremu Eghwrudjakpor`,
+  label: w.title,
+}));
+
+export const metadata: Metadata = {
+  title: { absolute: "Martina Uremu Eghwrudjakpor · Printmaker, educator and researcher" },
+  description:
+    "Printmaker, educator and researcher Martina Uremu Eghwrudjakpor, working in sheet-metal intaglio from Warri, Delta State, Nigeria. Selected works, studio gallery, biography and contact.",
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (
@@ -33,7 +53,17 @@ export default function HomePage() {
           </section>
         </div>
         <div style={{ paddingBottom: "1rem" }}>
-          <Gallery />
+          <Gallery items={studioItems} />
+        </div>
+
+        <div className="wide">
+          <section id="documented" className="homeSection">
+            <p className="eyebrow">Documented works</p>
+            <h2>From the PhD documentation</h2>
+          </section>
+        </div>
+        <div style={{ paddingBottom: "1rem" }}>
+          <Gallery items={documentedItems} />
         </div>
 
         <div className="wrap">

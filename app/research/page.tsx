@@ -4,7 +4,10 @@ import Footer from "@/components/Footer";
 import { publications } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Research · Martina Eghwrudjakpor",
+  title: "Research",
+  description:
+    "Publications and research by Martina Uremu Eghwrudjakpor, including work on printmaking, traditional signage in Benin Metropolis, graphic advertising for environmental awareness, and the PhD study of multiple objects on sheet metal.",
+  alternates: { canonical: "/research" },
 };
 
 export default function ResearchPage() {

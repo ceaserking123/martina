@@ -6,7 +6,10 @@ import PlateIcon from "@/components/PlateIcon";
 import { aboutPhotos } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "About · Martina Eghwrudjakpor",
+  title: "About",
+  description:
+    "Biography of Martina Uremu Eghwrudjakpor: printmaker and art educator in Warri, Delta State, Nigeria. Teaching and school leadership, PhD in Printmaking (Graphics) from the University of Benin (2026), and studio residency at Ovuomaroro Gallery, Mushin-Lagos.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -20,7 +23,7 @@ export default function AboutPage() {
         </div>
         <div className="aboutLede">
           <p>
-            Martina Eghwrudjakpor is a printmaker, art educator and school leader based in Warri, Delta State,
+            Martina Uremu Eghwrudjakpor is a printmaker, art educator and school leader based in Warri, Delta State,
             working chiefly in sheet-metal intaglio.
           </p>
         </div>

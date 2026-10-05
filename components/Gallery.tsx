@@ -4,11 +4,12 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { galleryImages } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Gallery() {
+export type GalleryItem = { src: string; alt: string; label: string };
+
+export default function Gallery({ items }: { items: GalleryItem[] }) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -27,10 +28,10 @@ export default function Gallery() {
 
   return (
     <div className="galleryGrid" ref={rootRef}>
-      {galleryImages.map((src, i) => (
-        <figure className="galleryTile" key={src}>
-          <img src={src} alt={`Studio photograph ${i + 1}`} loading="lazy" />
-          <span className="galleryIndex">{String(i + 1).padStart(2, "0")}</span>
+      {items.map((item) => (
+        <figure className="galleryTile" key={item.src}>
+          <img src={item.src} alt={item.alt} loading="lazy" />
+          <span className="galleryIndex">{item.label}</span>
         </figure>
       ))}
     </div>

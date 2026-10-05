@@ -60,7 +60,7 @@ export default function Nav() {
       <nav className="top">
         <div className="navWrap">
           <Link href="/" className="name">
-            Martina Eghwrudjakpor<sup>&reg;</sup>
+            Martina Uremu Eghwrudjakpor<sup>&reg;</sup>
           </Link>
           <div className="links">
             {navLinks.map((l) => (

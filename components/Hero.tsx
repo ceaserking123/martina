@@ -25,13 +25,13 @@ export default function Hero() {
   return (
     <div className="hv2Shell" ref={rootRef}>
       <div className="hv2Topline">
-        <span className="hv2Mark">Eghwrudjakpor</span>
+        <span className="hv2Mark">Martina Uremu Eghwrudjakpor</span>
         <span className="hv2Kicker">Portfolio</span>
       </div>
 
       <div className="heroBleed">
         {heroImage ? (
-          <Image src={heroImage} alt="Martina Eghwrudjakpor" fill sizes="100vw" priority />
+          <Image src={heroImage} alt="Martina Uremu Eghwrudjakpor" fill sizes="100vw" priority />
         ) : (
           <>
             <span className="hv2Vtext">

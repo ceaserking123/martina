@@ -52,12 +52,12 @@ export default function ContactForm() {
         {status === "sending" ? "Sending…" : "Send message"}
       </button>
       {status === "ok" && (
-        <p className="formNote ok">Message sent — thank you. She replies personally to every inquiry.</p>
+        <p className="formNote ok">Message sent. Thank you. She replies personally to every inquiry.</p>
       )}
       {status === "unconfigured" && (
         <p className="formNote">
-          This form isn&rsquo;t connected to an email service yet — please email martinaokoro562@gmail.com
-          directly. (See README.md → &ldquo;Wiring up the contact form&rdquo;.)
+          This form isn&rsquo;t connected to an email service yet. Please email martinaokoro562@gmail.com
+          directly. (See README.md, &ldquo;Wiring up the contact form&rdquo;.)
         </p>
       )}
       {status === "error" && (

@@ -9,6 +9,7 @@
   --line-strong: #c7c2b0;
   --accent: #3f6c5b;
   --accent-deep: #2a4e40;
+  --copper: #a8582f;
 
   /* Registration-sheet palette — monochrome (black / white / grey) */
   --hv2-white: #ffffff;
@@ -35,8 +36,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   margin: 0;
+  overflow-x: hidden;
 }
 .wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+.wide { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
 [hidden] { display: none !important; }
 a { color: inherit; }
 svg.plate { display: block; }
@@ -89,46 +92,61 @@ nav.top .links a.active { color: var(--hv2-ink); }
 .eyebrow.monoInk { color: var(--hv2-ink-soft); }
 
 /* ---------- Hero ---------- */
-.hv2Shell { background: var(--hv2-white); padding: 3.2rem 1.5rem 2.4rem; }
-.hv2Box { max-width: 1080px; margin: 0 auto; background: var(--hv2-white); color: var(--hv2-ink); position: relative; }
-.hv2Topline { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 2rem; }
+/* A full-bleed cover image (edge to edge of the browser) carries the headline,
+   with a caption row of contact facts underneath, the way a printed plate
+   sits above its own caption line. */
+.hv2Shell { background: var(--hv2-white); padding: 2.4rem 0 0; color: var(--hv2-ink); }
+.hv2Topline { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 1.6rem; }
 .hv2Mark, .hv2Kicker {
   font-family: var(--font-display); font-weight: 900;
   font-size: clamp(1.2rem, 3vw, 1.7rem); letter-spacing: -0.01em; line-height: 1;
 }
 .hv2Kicker { color: var(--hv2-grey-3); font-weight: 700; }
 
-.hv2Body { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.4rem; min-height: 380px; }
-@media (max-width: 780px) { .hv2Body { grid-template-columns: 1fr; gap: 2rem; } }
-
-.hv2Info { display: flex; flex-direction: column; justify-content: space-between; }
-.hv2Loc {
-  font-family: var(--font-display); font-weight: 500; font-size: 0.85rem; color: var(--hv2-ink-soft);
-  text-transform: uppercase; letter-spacing: 0.04em; display: flex; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 1.8rem;
+.heroBleed {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  aspect-ratio: 16 / 9;
+  max-height: 640px;
+  background: var(--hv2-grey-0);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
-.hv2Headline {
-  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem, 3.6vw, 2.5rem);
-  line-height: 1.08; letter-spacing: -0.015em; color: var(--hv2-ink); text-wrap: balance; margin: 0 0 1.8rem;
-}
-.hv2Headline em { font-style: normal; color: var(--hv2-ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.08em; text-decoration-color: var(--hv2-grey-2); }
-.hv2Contact { font-family: var(--font-display); font-size: 0.86rem; color: var(--hv2-ink); display: flex; flex-direction: column; gap: 0.4rem; }
-.hv2Contact .hcLabel { color: var(--hv2-ink-soft); display: inline-block; width: 5.2rem; }
-
-.hv2Portrait { position: relative; background: var(--hv2-grey-0); min-height: 280px; overflow: hidden; }
-.hv2Portrait .hv2Vtext {
-  position: absolute; top: 0; right: 0.9rem; height: 100%; display: flex; align-items: center;
+.heroBleed img { object-fit: cover; }
+.heroBleed .hv2Vtext {
+  position: absolute; top: 0; right: 1.4rem; height: 100%; display: flex; align-items: center;
   font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.18em; color: var(--hv2-grey-3);
   writing-mode: vertical-rl; text-transform: uppercase;
 }
-.hv2Portrait .hv2MarkIcon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-.hv2Portrait .hv2MarkIcon svg { color: var(--hv2-grey-2); width: 120px; height: 120px; }
-.hv2Portrait .hv2Pending {
-  position: absolute; bottom: 1rem; left: 1rem; font-family: var(--font-mono); font-size: 0.62rem;
+.heroBleed .hv2MarkIcon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.heroBleed .hv2MarkIcon svg { color: var(--hv2-grey-2); width: 22%; height: 22%; }
+.heroBleed .hv2Pending {
+  position: absolute; top: 1.2rem; left: 1.4rem; font-family: var(--font-mono); font-size: 0.62rem;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--hv2-grey-4);
 }
-.hv2Portrait img { object-fit: cover; }
+@media (max-width: 780px) {
+  .heroBleed { aspect-ratio: 3 / 4; max-height: none; }
+  .heroBleed .hv2Vtext { display: none; }
+}
+.heroHeadline {
+  position: relative;
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 4.4vw, 3.1rem);
+  line-height: 1.08; letter-spacing: -0.015em; color: var(--hv2-ink); text-wrap: balance;
+  margin: 0; padding: 1.6rem 1.4rem; max-width: 30ch;
+}
+.heroHeadline em { font-style: normal; color: var(--hv2-ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.08em; text-decoration-color: var(--hv2-grey-2); }
 
-.hv2Footline { display: flex; align-items: center; justify-content: space-between; padding-top: 1.6rem; }
+.heroCaption {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 2.4rem; padding-block: 1.3rem;
+  border-bottom: 1px solid var(--hv2-grey-1);
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--hv2-ink);
+}
+.heroCaption .hcLabel { color: var(--hv2-ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 0.5rem; }
+
+.hv2Footline { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0 0.4rem; }
 .hv2Dot { width: 11px; height: 11px; border-radius: 50%; background: var(--hv2-ink); }
 .hv2Cmyk { display: flex; gap: 6px; }
 .hv2Cmyk span { width: 10px; height: 10px; display: block; border-radius: 1px; }
@@ -163,33 +181,41 @@ h2 { font-family: var(--font-serif); font-weight: 600; font-size: 1.6rem; margin
 p.bodyText { font-size: 1.02rem; color: var(--ink); max-width: 64ch; margin: 0 0 1.1rem; }
 p.bodyText:last-child { margin-bottom: 0; }
 
-/* Projects grid — a scalable bento: the featured piece spans two columns,
-   everything else flows in a responsive grid that holds up as more work is added. */
-.projectsGrid { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
-.projTile.featured { grid-column: span 2; }
-@media (max-width: 780px) { .projTile.featured { grid-column: span 1; } }
-.projTile { display: block; }
-.projTile .ptImage {
-  aspect-ratio: 4 / 3; background: var(--hv2-grey-0); display: flex; align-items: center; justify-content: center;
-  position: relative; margin-bottom: 0.9rem; overflow: hidden;
+/* Work list — each piece gets a full-width plate and its own caption row,
+   in the order the work happened, rather than a grid of equal-weight tiles. */
+.workList { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 3.6rem; }
+.workEntry { display: block; }
+.weMedia {
+  aspect-ratio: 16 / 9; background: var(--hv2-grey-0); display: flex; align-items: center; justify-content: center;
+  position: relative; margin-bottom: 1.1rem; overflow: hidden;
 }
-.projTile.featured .ptImage { aspect-ratio: 16 / 11; }
-.projTile .ptImage svg { width: 22%; height: 22%; color: var(--hv2-grey-2); }
-.projTile .ptImage img { object-fit: cover; }
-.projTile .ptPending {
-  position: absolute; bottom: 0.8rem; left: 0.8rem; font-family: var(--font-mono); font-size: 0.6rem;
+.weMedia svg { width: 14%; height: 14%; color: var(--hv2-grey-2); }
+.weMedia img { object-fit: cover; }
+.wePending {
+  position: absolute; bottom: 0.9rem; left: 0.9rem; font-family: var(--font-mono); font-size: 0.62rem;
   letter-spacing: 0.07em; text-transform: uppercase; color: var(--hv2-grey-3);
 }
-.projTile .ptTitle { font-family: var(--font-serif); font-weight: 600; font-size: 1.08rem; margin: 0 0 0.2rem; }
-.projTile .ptMeta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+.weInfo { display: grid; grid-template-columns: 3.2rem 1fr; gap: 1.2rem; align-items: baseline; }
+.weIndex { font-family: var(--font-mono); font-size: 0.85rem; color: var(--copper); }
+.weTitle { font-family: var(--font-serif); font-weight: 600; font-size: 1.24rem; margin: 0 0 0.25rem; }
+.weMeta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; margin: 0; }
 
-/* Timeline */
-.timeline { position: relative; padding-left: 1.6rem; border-left: 2px solid var(--line-strong); display: flex; flex-direction: column; gap: 1.6rem; }
-.tItem { position: relative; }
-.tItem::before { content: ""; position: absolute; left: -1.94rem; top: 0.3rem; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
-.tItem .tDate { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.05em; text-transform: uppercase; display: block; margin-bottom: 0.2rem; }
-.tItem .tTitle { font-weight: 600; font-size: 1rem; margin: 0 0 0.15rem; font-family: var(--font-body); }
-.tItem .tDesc { font-size: 0.92rem; color: var(--ink-soft); margin: 0; }
+/* Gallery */
+.galleryGrid { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; column-count: 2; column-gap: 1rem; }
+@media (max-width: 600px) { .galleryGrid { column-count: 1; } }
+.galleryTile {
+  position: relative; margin: 0 0 1rem; break-inside: avoid; overflow: hidden; background: var(--hv2-grey-0);
+}
+.galleryTile img { display: block; width: 100%; height: auto; transition: transform 0.5s ease; }
+.galleryTile:hover img { transform: scale(1.03); }
+.galleryTile::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 45%; pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+}
+.galleryIndex {
+  position: absolute; z-index: 1; bottom: 0.7rem; left: 0.8rem;
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; color: #fff;
+}
 
 /* Research page */
 .researchList { max-width: 760px; margin: 0 auto; padding: 0 1.5rem 4rem; display: flex; flex-direction: column; }
@@ -216,10 +242,49 @@ p.bodyText:last-child { margin-bottom: 0; }
 }
 .pullQuote cite { display: block; margin-top: 0.9rem; font-family: var(--font-mono); font-style: normal; font-size: 0.72rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
 
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-@media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
-.factCard .fLabel { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin: 0 0 0.5rem; }
+/* Artwork detail page */
+.artHeroMedia { aspect-ratio: 4 / 3; background: var(--hv2-grey-0); position: relative; overflow: hidden; margin-top: 0.4rem; }
+.artHeroMedia img { object-fit: cover; }
+@media (max-width: 780px) { .artHeroMedia { aspect-ratio: 3 / 4; } }
+
+.mediaList { list-style: none; margin: 0 0 1.4rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 0.9rem; }
+.mediaList li {
+  font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.02em; color: var(--ink-soft);
+  background: var(--hv2-grey-0); padding: 0.3rem 0.65rem; border: 1px solid var(--line);
+}
+
+.workCompare { padding-block: 1rem 3.6rem; }
+.workCompare > .eyebrow { margin-bottom: 1rem; }
+.wcGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+.wcMedia { aspect-ratio: 3 / 4; background: var(--hv2-grey-0); position: relative; overflow: hidden; }
+.wcMedia img { object-fit: cover; }
+.wcCaption { display: flex; flex-direction: column; gap: 0.15rem; padding-top: 0.6rem; }
+.wcCaptionTitle { font-family: var(--font-body); font-size: 0.86rem; color: var(--ink); }
+.wcCaptionMeta { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); }
+@media (max-width: 780px) { .wcGrid { grid-template-columns: 1fr; gap: 2rem; } }
+
+a.workEntryLink { display: block; text-decoration: none; color: inherit; }
+
+.grid2, .practiceGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; }
+@media (max-width: 600px) { .grid2, .practiceGrid { grid-template-columns: 1fr; } }
+.factCard .fLabel, .specList > .fLabel { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin: 0 0 0.9rem; }
 .factCard p { margin: 0; font-size: 0.94rem; color: var(--ink-soft); }
+
+/* Spec list — a scannable row of date + fact, reused for recognition and contact details. */
+.specList { display: flex; flex-direction: column; }
+.specRow { display: grid; grid-template-columns: 5.4rem 1fr; gap: 1rem; padding-block: 0.9rem; }
+.specRow + .specRow { border-top: 1px solid var(--line); }
+.specDate { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.03em; padding-top: 0.15rem; }
+.specTitle { font-weight: 600; font-size: 0.94rem; margin: 0 0 0.2rem; color: var(--ink); }
+.specOrg { font-size: 0.88rem; color: var(--ink-soft); margin: 0; }
+
+.contactGrid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem; align-items: start; }
+@media (max-width: 700px) { .contactGrid { grid-template-columns: 1fr; gap: 2rem; } }
+.contactDetails { display: flex; flex-direction: column; }
+.cdRow { padding-block: 0.85rem; }
+.cdRow + .cdRow { border-top: 1px solid var(--line); }
+.cdRow .cdLabel { display: block; font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin-bottom: 0.3rem; }
+.cdRow .cdValue { font-size: 0.98rem; color: var(--ink); }
 
 form.contact { display: flex; flex-direction: column; gap: 0.9rem; max-width: 480px; }
 form.contact label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); display: block; margin-bottom: 0.35rem; }

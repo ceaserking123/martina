@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { publications } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Research — Martina Eghwrudjakpor",
+  title: "Research · Martina Eghwrudjakpor",
 };
 
 export default function ResearchPage() {

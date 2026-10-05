@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       to: [toEmail],
       reply_to: email,
       subject: `New message from ${name} via the portfolio site`,
-      text: `${message}\n\n— ${name} (${email})`,
+      text: `${message}\n\nFrom: ${name} (${email})`,
     }),
   });
 

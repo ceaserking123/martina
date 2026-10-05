@@ -20,10 +20,10 @@ project's `images` array, for example:
 },
 ```
 
-The first image in the array is used as the tile's cover photo. Until an
+The first image in the array is used as the entry's cover photo. Until an
 `images` array has at least one path in it, that project shows an honest
-"Image pending" placeholder instead of a fake photo — never delete that
+"Image pending" placeholder instead of a fake photo. Never delete that
 fallback, just fill in real paths as photos become available.
 
 You can also add entirely new projects by adding more objects to the
-`projects` array in `lib/data.ts` — the grid layout adapts automatically.
+`projects` array in `lib/data.ts`. The list adapts automatically.

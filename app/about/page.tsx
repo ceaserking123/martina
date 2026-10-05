@@ -6,7 +6,7 @@ import PlateIcon from "@/components/PlateIcon";
 import { aboutPhotos } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "About — Martina Eghwrudjakpor",
+  title: "About · Martina Eghwrudjakpor",
 };
 
 export default function AboutPage() {

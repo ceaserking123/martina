@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -10,23 +11,36 @@ import { projects } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function ProjectTile({ project }: { project: (typeof projects)[number] }) {
+function WorkEntry({ project, index }: { project: (typeof projects)[number]; index: number }) {
   const cover = project.images[0];
-  return (
-    <div className={`projTile${project.featured ? " featured" : ""}`}>
-      <div className="ptImage">
+  const body = (
+    <article className="workEntry">
+      <div className="weMedia">
         {cover ? (
-          <Image src={cover} alt={project.title} fill sizes="(max-width: 780px) 100vw, 50vw" />
+          <Image src={cover} alt={project.title} fill sizes="(max-width: 780px) 100vw, 1080px" />
         ) : (
           <>
             <PlateIcon />
-            <span className="ptPending">Image pending</span>
+            <span className="wePending">Image pending</span>
           </>
         )}
       </div>
-      <p className="ptTitle">{project.title}</p>
-      <p className="ptMeta">{project.meta}</p>
-    </div>
+      <div className="weInfo">
+        <span className="weIndex">{String(index + 1).padStart(2, "0")}</span>
+        <div>
+          <h3 className="weTitle">{project.title}</h3>
+          <p className="weMeta">{project.meta}</p>
+        </div>
+      </div>
+    </article>
+  );
+
+  return project.detailHref ? (
+    <Link href={project.detailHref} className="workEntryLink">
+      {body}
+    </Link>
+  ) : (
+    body
   );
 }
 
@@ -36,21 +50,22 @@ export default function ProjectsGrid() {
   useGSAP(
     () => {
       // Position-only reveal — see Practice.tsx for why opacity never starts at 0.
-      gsap.from(".projTile", {
-        y: 24,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: { trigger: rootRef.current, start: "top 80%" },
+      gsap.utils.toArray<HTMLElement>(".workEntry").forEach((entry) => {
+        gsap.from(entry, {
+          y: 28,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: { trigger: entry, start: "top 85%" },
+        });
       });
     },
     { scope: rootRef }
   );
 
   return (
-    <div className="projectsGrid" ref={rootRef}>
-      {projects.map((p) => (
-        <ProjectTile key={p.slug} project={p} />
+    <div className="workList" ref={rootRef}>
+      {projects.map((p, i) => (
+        <WorkEntry key={p.slug} project={p} index={i} />
       ))}
     </div>
   );
